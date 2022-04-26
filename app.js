@@ -1,10 +1,29 @@
 const express = require('express');
-const app = express();
 const port = 3000;
 
+const path = require('path');
+const filesDir = '/var/www/app/ui/html';
+
+////////////////////////////////////////////////////////////////
+
+// Create server
+const app = express();
+// Port to listen on
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+
+// Location of static files
+app.use(express.static('ui'));
+
+
+// Home route
 app.get('/', (req, res) => {
-    res.send('Hello World!, This is where you can start put HTML files using Express.');
+
+    res.sendFile(path.join(filesDir, 'index.html'));
+
+
 });
 
-
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+// New order route
+app.get('/new-order', (req, res) => {
+    res.sendFile(path.join(filesDir, 'order-form.html'));
+});

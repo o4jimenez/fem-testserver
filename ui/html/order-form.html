@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+
+    <link rel="icon" type="images/x-icon" href="/images/favicon.ico">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!--
+    <script src="jquery.js"></script>
+    <script src="script.js"></script>
+    -->
+
+</head>
+<body>
+    <header>
+        <h1 id="page-banner">Party Rental Order Form</h1>
+    </header>
+
+    <main>
+        <div id="order_sheet">
+            <form>
+                <!-- Date of Event -->
+                <div class="form-info" id="form_date">
+                    <label for="event-date">DATE: </label>
+                    <input type="date" name="event-date" id="event-date" required>
+                </div>
+
+                <!-- Customer Information -->
+                <div class='form-info w3-card w3-container w3-light-grey' id="customer-info">
+                    <h2>Customer Information</h2>
+                    <label for="order-name">Name</label><input class="w3-input" type="text" name="customer-name" id="order-name" placeholder="Louis">
+                    <label for="order-address">Address</label><input class="w3-input" type="text" name="customer-address" id="order-address" placeholder="1234 Main St." required>
+                    <label for="order-phone">Phone Number</label><input class="w3-input" type="text" name="customer-phone" id="order-phone" placeholder="(805) 654-3210">
+                </div>
+
+                <!-- Items Ordered -->
+                    <div id="items-info-header"><h2>Items</h2></div>
+                <div class="form-info" id="items-info">
+                    
+                    <fieldset class="items-block" id="form-chairs">
+                        <legend>Chairs</legend>
+                        <div class="item">
+                            <label for="beige-chair">Beige Chairs</label>
+                            <input class="item-input" type="number" name="beige-chair-quantity" id="beige-chair" max="400" placeholder="0" min="0">
+                        </div>
+                        <div class="item">
+                            <label for="white-chair">White Chairs</label>
+                            <input type="number" name="white-chair-quantity" id="white-chair" max="300" placeholder="0" min="0">
+                        </div>
+                        <div class="item">
+                            <label for="kid-chair">Kid Chairs</label>
+                            <input type="number" name="kid-chair-quantity" id="kid-chair" max="30" placeholder="0" min="0">
+                        </div>
+
+                        <div class="order-subtotal">
+                            <p>Subtotal: <span id="chair-subtotal"></span></p>
+                        </div>
+                    </fieldset>
+                
+                    <fieldset class="items-block" id="form-tables">
+                        <legend>Tables</legend>
+                        <div class="item">
+                            <label for="rectangle-6ft-table">Rectangle Tables (6ft)</label>
+                            <input type="number" name="rectangle-6ft-table-quantity" id="rectangle-6ft-table" placeholder="0" min="0">
+                        </div>
+
+                        <div class="item">
+                            <label for="round-48in-table">Round Tables (small)</label>
+                            <input type="number" name="round-48in-table-quantity" id="table-round-48in" placeholder="0" min="0">
+                        </div>  
+
+                        <div class="item">
+                            <label for="round-60in-table">Round Tables (large)</label>
+                            <input type="number" name="round-60in-table-quantity" id="round-60in-table" placeholder="0" min="0">
+                        </div>
+
+                        <div class="item">
+                            <label for="cocktail-table">Cocktail Tables</label>
+                            <input type="number" name="cocktail-table-quantity" id="cocktail-table" placeholder="0" min="0">
+                        </div>
+                        
+                        <div class="item">
+                            <label for="kid-table">Kid Tables</label>
+                            <input type="number" name="kid-table-quantity" id="kid-table" placeholder="0" min="0">
+                        </div>
+                        <div class="order-subtotal">
+                            <p>Subtotal:<span id="table-subtotal"></span></p>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="items-block" id="form-jumpers">
+                        <legend>Jumpers</legend>
+                        <div class="item">
+                            <label for="jumper">Choose a Jumper:</label>
+                            <select name="jumper-ordered" id="jumper">
+                                <option value="none">None</option>
+                                <option value="blue_11">Blue 11x11</option>
+                                <option value="blue_13">Blue 13x13</option>
+                                <option value="pink_11">Pink 11x11</option>
+                                <option value="pink_13">Pink 13x13</option>
+                                <option value="combo-right">Combo (right)</option>
+                                <option value="combo-left">Combo (left)</option>
+                                <option value="jungle">Jungle</option>
+                                <option value="sport">Sports</option>
+                                <option value="waterslide">Waterslide</option>
+                            </select>
+                        </div>
+
+                        <div class="item">
+                            <label for="jumper-banner">Banners</label>
+                            <input type="text" name="jumper-banner" id="jumper-banner">
+                        </div>
+                        <div class="item">
+                            <label for="jumper-generator">Generator</label>
+                            <input type="checkbox" name="jumper-generator" id="jumper-generator">
+                        </div>
+
+                        <div class="order-subtotal">
+                            <p>Subtotal:<span id="jumper-subtotal"></span></p>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="items-block" id="form-tents">
+                        <legend>Tents & Canopies</legend>
+                        <div class="item">
+                            <label for="tent">Tent:</label>
+                            <div>
+                                <input type="checkbox" name="tent-12x20" id="tent-12x20">
+                                <label>12x20</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" name="tent-12x30" id="tent-12x30">
+                                <label>12x30</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" name="tent-20x30" id="tent-20x30">
+                                <label>20x30</label>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <label for="canopy">Canopies</label>
+                            <input type="number" name="canopy-quantity" id="canopy" min="0" max="4">
+                        </div>
+
+                        <div class="order-subtotal">
+                            <p>Subtotal:<span id="tent-subtotal"></span></p>
+                        </div>
+
+                    </fieldset>
+
+                    <fieldset class="items-block" id="form-misc">
+                        <legend>Miscellaneous Items</legend>
+                        <div class="item">
+                            <label for="portable-restroom">Portable Restroom</label>
+                            <input type="checkbox" name="portable-restroom" id="portable-restroom">
+                        </div>
+                        <div class="item">
+                            <label for="snowcone-machine">Snowcone Machine</label>
+                            <input type="checkbox" name="snowcone-machine" id="snowcone-machine">
+                        </div>
+                        <div class="item">
+                            <label for="patio-heater">Patio Heaters</label>
+                            <input type="number" name="patio-heater-quantity" id="patio-heater" min="0" max="6">
+                        </div>
+                        <div class="item" id="additional-items-containers">
+                            <div class="item-label">
+                                <label for="additional-items">Additional Items</label>
+                            </div>
+                            <textarea id="additional-items" name="aditional-item-list", rows="4"> </textarea>
+                        </div>
+                        <div class="order-subtotal">
+                            <p>Subtotal: See Additional Cost<span id="misc-subtotal"></span></p>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <!-- Fulfillment Information -->
+                <div class="form-info" id="fulfillment-info">
+                        <h2>Payment Information</h2>
+                    <div class="payment-block" id="cost-info">
+                        <div>
+                            <label for="additonal-cost"> Additonal Cost:</label>
+                            <input class="cost-info-block" type="number" name="additonal-cost" id="additonal-cost" value="0">
+                        </div>
+
+                        <div>
+                            <label for="delivery-cost">Delivery: $10</label>
+                            <input class="cost-info-block" type="checkbox" name="delivery-boolean" id="delivery-cost" checked></div>
+                        <div id="cost-info-total">
+                            <label for="total-cost">Total Cost:</label>
+                            <input class="cost-info-block" type="number" name="order-cost" id="total-cost" value="0">
+                        </div>
+                    </div>
+                    <div class="payment-block" id="payment-info">
+                        <div id="payment-paid">
+                            <label>Paid:</label>
+                            <div>
+                                <label for="paid-yes">Yes</label>
+                                <input type="radio" name="paid" id="paid-yes" value="true">
+                            </div>
+                            <div>
+                                <label for="paid-no"> No</label>
+                                <input type="radio" name="paid" id="paid-no" value="false">
+                            </div>
+                        </div>
+
+                        <div id="pay-method-div">
+                            <label for="pay-method">Payment Method</label>
+                            <select name="pay-method" id="pay-method">
+                                <option value="cash">Cash</option>
+                                <option value="venmo">Venmo</option>
+                                <option value="zelle">Zelle</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="payment-block" id="status-info">
+                        <label for="order-status">Status:</label>
+                        <select name="order-status" id="order-status">
+                            <option value="pending">Pending</option>
+                            <option value="incomplete">Incomplete</option>
+                            <option value="delivered">Delivered</option>
+                            <option value="complete">Complete</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="submit-button-container">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+    </main>
+    
+</body>
+</html>
